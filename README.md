@@ -7,7 +7,7 @@ Some mathematatics for Immutable.js for aggregations and stuff. Super not-releas
 
 # Usage
 
-Most functions in this library use partially applied functions.
+Functions in this library use partially applied functions.
 For example, one way to use `average` is to call it, passing in any parameters required (`average` requires no extra params), then call the returned function passing in your data.
 
 ```js
