@@ -14,8 +14,7 @@
     "test": "nyc --report-dir=./coverage npm run tape && npm run check-coverage",
     "check-coverage": "nyc check-coverage --branches 0.0  --functions 0.0 --lines 0",
     "docs": "jsdoc -c jsdoc/conf.json",
-    "flow": "flow; test $? -eq 0 -o $? -eq 2",
-    "prepublish": "npm run build && npm run docs"
+    "flow": "flow; test $? -eq 0 -o $? -eq 2"
   },
   "keywords": [
     "immutable",
