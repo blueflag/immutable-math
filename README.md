@@ -3,7 +3,7 @@
 [![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](http://opensource.org/licenses/MIT)
 [![github-issues](https://img.shields.io/github/issues/blueflag/immutable-math.svg)](https://github.com/blueflag/immutable-math/issues)
 
-Some mathematatics for Immutable.js for aggregations and stuff. Super not-release ready. [http://blueflag.github.io/immutable-math/](Crummy docs).
+Some mathematatics for Immutable.js for aggregations and stuff. Super not-release ready. [Crummy docs](http://blueflag.github.io/immutable-math/).
 
 # Usage
 
