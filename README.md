@@ -15,13 +15,13 @@ const numbers = fromJS([1,1,1,5]);
 return average()(numbers); // returns 2
 ```
 
-This design of using a partially applied function allows immutable-math's functions to be chained easily with Immutable,
-by using them inside of an `update()` method, if your input `Iterable` has an update function.
-This is the preferred usage pattern as it retains chainability.
+For any immutable-math functions that return an `Iterable`, this design of using a partially applied function allows for easy chaining by using them inside of an `update()` method, if your input `Iterable` has an update function.
 
 ```js
 return fromJS([1,1,1,5])
-    .update(average()) // using average in a chain
+    .update(exampleFunction()) // using an exampleFunction from immutable-math in a chain
+    .sort()
+    .toJS();
 ```
 
 You can also define a function to perform a specific operation, and use it multiple times by passing in different input data.
