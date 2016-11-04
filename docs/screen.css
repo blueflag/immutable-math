@@ -12,21 +12,32 @@ body {
     margin-top: 1.5rem;
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, h5 {
     font-weight: 300;
 }
 
-h1,h2 {
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
     font-size: 2rem;
 }
 
 h3 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
 }
 
 h4 {
-    font-size: 1rem;
+    font-size: 1.1rem;
     margin-top: 4rem;
+    font-weight: bold;
+}
+
+h5 {
+    font-size: 1rem;
+    font-style: italic;
+    margin-bottom: 0.5rem;
 }
 
 code {
@@ -50,9 +61,25 @@ section {
     margin-bottom: 4rem;
 }
 
+ul li {
+    margin-top: 1rem;
+}
+
+.Param-indent {
+    display: block;
+    margin: 0 0 0 2rem;
+}
+
+.ParamTypes {
+    color: #C55B4E;
+}
+
+.ParamListItem p {
+    display: inline;
+}
 
 /*
-Code Higlighting
+Code Highlighting
 
 blue        #6CA6CE
 green       #86C797

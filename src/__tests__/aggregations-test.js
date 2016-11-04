@@ -9,6 +9,10 @@ import {
 } from 'immutable';
 
 import {
+  min,
+  minBy,
+  max,
+  maxBy,
   average,
   averageBy,
   mean,
@@ -18,6 +22,106 @@ import {
   sum,
   sumBy
 } from '../aggregations';
+
+tape('min', test => {
+    test.plan(3);
+
+    test.equals(
+      fromJS([]).update(min()),
+      undefined,
+      'min works on no items'
+    );
+
+    test.equals(
+      fromJS([2]).update(min()),
+      2,
+      'min works on single item'
+    );
+
+    test.equals(
+      fromJS([2,2,8]).update(min()),
+      2,
+      'min works on lots of items'
+    );
+});
+
+tape('minBy', test => {
+    test.plan(3);
+
+    test.equals(
+      fromJS([]).update(minBy(ii => ii.get('n'))),
+      undefined,
+      'minBy works on no items'
+    );
+
+    test.equals(
+      fromJS([
+        {n: 2}
+      ]).update(minBy(ii => ii.get('n'))),
+      2,
+      'minBy works on single item'
+    );
+
+    test.equals(
+      fromJS([
+        {n: 2},
+        {n: 2},
+        {n: 8}
+      ]).update(minBy(ii => ii.get('n'))),
+      2,
+      'minBy works on lots of items'
+    );
+});
+
+tape('max', test => {
+    test.plan(3);
+
+    test.equals(
+      fromJS([]).update(max()),
+      undefined,
+      'max works on no items'
+    );
+
+    test.equals(
+      fromJS([2]).update(max()),
+      2,
+      'max works on single item'
+    );
+
+    test.equals(
+      fromJS([2,2,8]).update(max()),
+      8,
+      'max works on lots of items'
+    );
+});
+
+tape('maxBy', test => {
+    test.plan(3);
+
+    test.equals(
+      fromJS([]).update(maxBy(ii => ii.get('n'))),
+      undefined,
+      'maxBy works on no items'
+    );
+
+    test.equals(
+      fromJS([
+        {n: 2}
+      ]).update(maxBy(ii => ii.get('n'))),
+      2,
+      'maxBy works on single item'
+    );
+
+    test.equals(
+      fromJS([
+        {n: 2},
+        {n: 2},
+        {n: 8}
+      ]).update(maxBy(ii => ii.get('n'))),
+      8,
+      'maxBy works on lots of items'
+    );
+});
 
 tape('average', test => {
     test.plan(3);

@@ -4,6 +4,75 @@
  * @module aggregations
  */
 
+/**
+ * Finds the minimum number in an `Iterable`. Accepts no parameters.
+ *
+ * @return {InputFunction} A partially applied function which accepts a single `Iterable`, and returns the result of the operation.
+ */
+
+function min(): InputFunction {
+  return (input: Iterable<*,*>): number => {
+    return input.isEmpty()
+      ? undefined
+      : input.min();
+  }
+}
+
+/**
+ * Like `min`, but also accepts a `valueMapper` function which allows you to process child properties.
+ * @param {ValueMapper} valueMapper A function that allows you to specify what value gets processed on each item in the input `Iterable`.
+ * @return {InputFunction} A partially applied function which accepts a single `Iterable`, and returns the result of the operation.
+ */
+
+function minBy(valueMapper: ValueMapper): InputFunction {
+  return (input: Iterable<*,*>): number => min()(input.map(valueMapper));
+}
+
+
+/**
+ * Finds the maximum number in an `Iterable`. Accepts no parameters.
+ *
+ * @return {InputFunction} A partially applied function which accepts a single `Iterable`, and returns the result of the operation.
+ */
+
+function max(): InputFunction {
+  return (input: Iterable<*,*>): number => {
+    return input.isEmpty()
+      ? undefined
+      : input.max();
+  }
+}
+
+/**
+ * Like `max`, but also accepts a `valueMapper` function which allows you to process child properties.
+ * @param {ValueMapper} valueMapper A function that allows you to specify what value gets processed on each item in the input `Iterable`.
+ * @return {InputFunction} A partially applied function which accepts a single `Iterable`, and returns the result of the operation.
+ */
+
+function maxBy(valueMapper: ValueMapper): InputFunction {
+  return (input: Iterable<*,*>): number => max()(input.map(valueMapper));
+}
+
+ /**
+ * Sums the elements in an `Iterable`. Accepts no parameters.
+ *
+ * @return {InputFunction} A partially applied function which accepts a single `Iterable`, and returns the result of the operation.
+ */
+
+function sum(): InputFunction {
+  return (input: Iterable<*,*>): number => input.reduce((sum: number, val: number) => sum + val, 0);
+}
+
+/**
+ * Like `sum`, but also accepts a `valueMapper` function which allows you to process child properties.
+ * @param {ValueMapper} valueMapper A function that allows you to specify what value gets summed on each item in the input `Iterable`.
+ * @return {InputFunction} A partially applied function which accepts a single `Iterable`, and returns the result of the operation.
+ */
+
+function sumBy(valueMapper: ValueMapper): InputFunction {
+  return (input: Iterable<*,*>): number => sum()(input.map(valueMapper));
+}
+
 
 /**
  * Averages the elements in an `Iterable`. Accepts no parameters.
@@ -20,8 +89,7 @@ function average(): InputFunction {
 }
 
 /**
- * Like `average`, but also accepts a `valueMapper` function which allows for averaging by more sophisticated means.
- *
+ * Like `average`, but also accepts a `valueMapper` function which allows you to process child properties.
  * @param {ValueMapper} valueMapper A function that allows you to specify what value gets averaged on each item in the input `Iterable`.
  * @return {InputFunction} A partially applied function which accepts a single `Iterable`, and returns the result of the operation.
  */
@@ -29,6 +97,8 @@ function average(): InputFunction {
 function averageBy(valueMapper: ValueMapper): InputFunction {
   return (input: Iterable<*,*>): number => average()(input.map(valueMapper));
 }
+
+
 
 /**
  * An alias for {@link average}.
@@ -71,7 +141,7 @@ function median(): InputFunction {
 }
 
 /**
- * Like `median`, but also accepts a `valueMapper` function which allows for determning the median by more sophisticated means.
+ * Like `median`, but also accepts a `valueMapper` function which allows you to process child properties.
  *
  * @param {ValueMapper} valueMapper A function that allows you to specify what value gets read from each item in the input `Iterable`.
  * @return {InputFunction} A partially applied function which accepts a single `Iterable`, and returns the result of the operation.
@@ -81,37 +151,21 @@ function medianBy(valueMapper: ValueMapper): InputFunction {
   return (input: Iterable<*,*>): number => median()(input.map(valueMapper));
 }
 
- /**
- * Sums the elements in an `Iterable`. Accepts no parameters.
- *
- * @return {InputFunction} A partially applied function which accepts a single `Iterable`, and returns the result of the operation.
- */
-
-function sum(): InputFunction {
-  return (input: Iterable<*,*>): number => input.reduce((sum: number, val: number) => sum + val, 0);
-}
-
-/**
- * Like `sum`, but also accepts a `valueMapper` function which allows for summing by more sophisticated means.
- *
- * @param {ValueMapper} valueMapper A function that allows you to specify what value gets summed on each item in the input `Iterable`.
- * @return {InputFunction} A partially applied function which accepts a single `Iterable`, and returns the result of the operation.
- */
-
-function sumBy(valueMapper: ValueMapper): InputFunction {
-  return (input: Iterable<*,*>): number => sum()(input.map(valueMapper));
-}
-
 export {
+  min,
+  minBy,
+  max,
+  maxBy,
+  sum,
+  sumBy,
   average,
   averageBy,
   mean,
   meanBy,
   median,
-  medianBy,
-  sum,
-  sumBy
+  medianBy
 }
+
 
 /**
  * InputFunction is a partially applied function returned from aggregations in immutable-math.
