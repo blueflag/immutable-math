@@ -5,3 +5,6 @@ module.system.node.resolve_dirname=..
 [libs]
 src/
 node_modules/immutable/dist/immutable.js.flow
+
+[ignore]
+.*/node_modules/fbjs/.*

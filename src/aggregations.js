@@ -1,5 +1,5 @@
 // @flow
-
+import type {Iterable} from 'immutable';
 /**
  * @module aggregations
  */
@@ -11,11 +11,11 @@
  */
 
 function min(): InputFunction {
-  return (input: Iterable<*,*>): number => {
-    return input.isEmpty()
-      ? undefined
-      : input.min();
-  }
+    return (input: Iterable<*,*>): number => {
+        return input.isEmpty()
+          ? NaN
+          : input.min();
+    }
 }
 
 /**
@@ -25,7 +25,7 @@ function min(): InputFunction {
  */
 
 function minBy(valueMapper: ValueMapper): InputFunction {
-  return (input: Iterable<*,*>): number => min()(input.map(valueMapper));
+    return (input: Iterable<*,*>): number => min()(input.map(valueMapper));
 }
 
 
@@ -36,11 +36,11 @@ function minBy(valueMapper: ValueMapper): InputFunction {
  */
 
 function max(): InputFunction {
-  return (input: Iterable<*,*>): number => {
-    return input.isEmpty()
-      ? undefined
+    return (input: Iterable<*,*>): number => {
+        return input.isEmpty()
+      ? NaN
       : input.max();
-  }
+    }
 }
 
 /**
@@ -50,7 +50,7 @@ function max(): InputFunction {
  */
 
 function maxBy(valueMapper: ValueMapper): InputFunction {
-  return (input: Iterable<*,*>): number => max()(input.map(valueMapper));
+    return (input: Iterable<*,*>): number => max()(input.map(valueMapper));
 }
 
  /**
@@ -60,7 +60,7 @@ function maxBy(valueMapper: ValueMapper): InputFunction {
  */
 
 function sum(): InputFunction {
-  return (input: Iterable<*,*>): number => input.reduce((sum: number, val: number) => sum + val, 0);
+    return (input: Iterable<*,*>): number => input.reduce((sum: number, val: number) => sum + val, 0);
 }
 
 /**
@@ -70,7 +70,7 @@ function sum(): InputFunction {
  */
 
 function sumBy(valueMapper: ValueMapper): InputFunction {
-  return (input: Iterable<*,*>): number => sum()(input.map(valueMapper));
+    return (input: Iterable<*,*>): number => sum()(input.map(valueMapper));
 }
 
 
@@ -81,11 +81,11 @@ function sumBy(valueMapper: ValueMapper): InputFunction {
  */
 
 function average(): InputFunction {
-  return (input: Iterable<*,*>): number => {
-    return input.isEmpty()
-      ? undefined
-      : sum()(input) / input.count();
-  }
+    return (input: Iterable<*,*>): number => {
+        return input.isEmpty()
+            ? NaN
+            : sum()(input) / input.count();
+    }
 }
 
 /**
@@ -95,7 +95,7 @@ function average(): InputFunction {
  */
 
 function averageBy(valueMapper: ValueMapper): InputFunction {
-  return (input: Iterable<*,*>): number => average()(input.map(valueMapper));
+    return (input: Iterable<*,*>): number => average()(input.map(valueMapper));
 }
 
 
@@ -106,7 +106,7 @@ function averageBy(valueMapper: ValueMapper): InputFunction {
  */
 
 function mean(): InputFunction {
-  return average();
+    return average();
 }
 
 /**
@@ -117,7 +117,7 @@ function mean(): InputFunction {
  */
 
 function meanBy(valueMapper: ValueMapper): InputFunction {
-  return averageBy(valueMapper);
+    return averageBy(valueMapper);
 }
 
 
@@ -128,16 +128,16 @@ function meanBy(valueMapper: ValueMapper): InputFunction {
  */
 
 function median(): InputFunction {
-  return (input: Iterable<*,*>): number => {
-    if(input.isEmpty()) {
-      return undefined;
+    return (input: Iterable<*,*>): number => {
+        if(input.isEmpty()) {
+            return NaN;
+        }
+        const sorted = input.sort();
+        const count = input.count();
+        return count % 2 == 0
+            ? (sorted.get(count / 2) + sorted.get((count / 2) - 1)) / 2
+            : sorted.get(Math.floor(count / 2));
     }
-  	const sorted = input.sort();
-    const count = input.count();
-    return count % 2 == 0
-      ? (sorted.get(count / 2) + sorted.get((count / 2) - 1)) / 2
-      : sorted.get(Math.floor(count / 2));
-  }
 }
 
 /**
@@ -148,7 +148,7 @@ function median(): InputFunction {
  */
 
 function medianBy(valueMapper: ValueMapper): InputFunction {
-  return (input: Iterable<*,*>): number => median()(input.map(valueMapper));
+    return (input: Iterable<*,*>): number => median()(input.map(valueMapper));
 }
 
 export {
@@ -215,7 +215,7 @@ export {
  * @return {Number} The result of the function
  */
 
- type InputFunction = (input: Iterable<*,*>) => *;
+type InputFunction = (input: Iterable<*,*>) => *;
 
 /**
  * A function required by some operations that allows you to specify what value gets pulled from each item in the input `Iterable` when performing a calculation.
@@ -227,4 +227,4 @@ export {
  * @return {Number} The number to use in the operation.
  */
 
- type ValueMapper = (value: *, key: *, iter: Iterable<*,*>) => *;
+type ValueMapper = (value: *, key: *, iter: Iterable<*,*>) => *;

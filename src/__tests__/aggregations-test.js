@@ -1,11 +1,8 @@
+
+
 import tape from 'tape';
 import {
-  is,
-  fromJS,
-  Iterable,
-  List,
-  Map,
-  OrderedMap
+  fromJS
 } from 'immutable';
 
 import {
@@ -15,8 +12,6 @@ import {
   maxBy,
   average,
   averageBy,
-  mean,
-  meanBy,
   median,
   medianBy,
   sum,
@@ -27,8 +22,8 @@ tape('min', test => {
     test.plan(3);
 
     test.equals(
-      fromJS([]).update(min()),
-      undefined,
+      isNaN(fromJS([]).update(min())),
+      true,
       'min works on no items'
     );
 
@@ -49,8 +44,8 @@ tape('minBy', test => {
     test.plan(3);
 
     test.equals(
-      fromJS([]).update(minBy(ii => ii.get('n'))),
-      undefined,
+      isNaN(fromJS([]).update(minBy(ii => ii.get('n')))),
+      true,
       'minBy works on no items'
     );
 
@@ -77,8 +72,8 @@ tape('max', test => {
     test.plan(3);
 
     test.equals(
-      fromJS([]).update(max()),
-      undefined,
+      isNaN(fromJS([]).update(max())),
+      true,
       'max works on no items'
     );
 
@@ -99,8 +94,8 @@ tape('maxBy', test => {
     test.plan(3);
 
     test.equals(
-      fromJS([]).update(maxBy(ii => ii.get('n'))),
-      undefined,
+      isNaN(fromJS([]).update(maxBy(ii => ii.get('n')))),
+      true,
       'maxBy works on no items'
     );
 
@@ -127,8 +122,8 @@ tape('average', test => {
     test.plan(3);
 
     test.equals(
-      fromJS([]).update(average()),
-      undefined,
+      isNaN(fromJS([]).update(average())),
+      true,
       'average works on no items'
     );
 
@@ -149,8 +144,8 @@ tape('averageBy', test => {
     test.plan(3);
 
     test.equals(
-      fromJS([]).update(averageBy(ii => ii.get('n'))),
-      undefined,
+      isNaN(fromJS([]).update(averageBy(ii => ii.get('n')))),
+      true,
       'averageBy works on no items'
     );
 
@@ -177,8 +172,8 @@ tape('median', test => {
     test.plan(4);
 
     test.equals(
-      fromJS([]).update(median()),
-      undefined,
+      isNaN(fromJS([]).update(median())),
+      true,
       'median works on no items'
     );
 
@@ -205,8 +200,8 @@ tape('medianBy', test => {
     test.plan(4);
 
     test.equals(
-      fromJS([]).update(medianBy(ii => ii.get('n'))),
-      undefined,
+      isNaN(fromJS([]).update(medianBy(ii => ii.get('n')))),
+      true,
       'medianBy works on no items'
     );
 
