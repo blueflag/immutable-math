@@ -19,7 +19,7 @@ import {
 } from '../aggregations';
 
 tape('min', test => {
-    test.plan(3);
+    test.plan(4);
 
     test.equals(
       isNaN(fromJS([]).update(min())),
@@ -37,6 +37,12 @@ tape('min', test => {
       fromJS([2,2,8]).update(min()),
       2,
       'min works on lots of items'
+    );
+
+    test.equals(
+      fromJS(["d","z","p","a"]).update(min()),
+      "a",
+      'min works on strings'
     );
 });
 
