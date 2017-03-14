@@ -3,7 +3,7 @@ module.system.node.resolve_dirname=node_modules
 module.system.node.resolve_dirname=..
 
 [libs]
-src/
+src/decls/FlowTypes.js
 node_modules/immutable/dist/immutable.js.flow
 
 [ignore]

@@ -1,15 +1,15 @@
 body {
-    font-family: Menlo, monospace;
+    font-family: Menlo, Consolas, monospace;
     font-size: 13px;
     line-height: 1.6;
-    max-width: 700px;
-    margin: auto;
-    padding: 3rem 1rem;
+    padding: 0 1rem;
     color: #383838;
+    width: 54rem;
+    margin: auto;
 }
 
-* + * {
-    margin-top: 1.5rem;
+a {
+    color: #6CA6CE
 }
 
 h1, h2, h3, h4, h5 {
@@ -18,6 +18,7 @@ h1, h2, h3, h4, h5 {
 
 h1 {
     font-size: 2.5rem;
+    margin-top: 4rem;
 }
 
 h2 {
@@ -26,12 +27,14 @@ h2 {
 
 h3 {
     font-size: 1.6rem;
+    margin-top: 4rem;
 }
 
 h4 {
     font-size: 1.1rem;
-    margin-top: 4rem;
     font-weight: bold;
+    padding-top: 2rem;
+    margin: 0;
 }
 
 h5 {
@@ -58,11 +61,36 @@ pre {
 }
 
 section {
-    margin-bottom: 4rem;
+    margin-bottom: 8rem;
+}
+
+ul {
+    padding: 0;
 }
 
 ul li {
     margin-top: 1rem;
+    list-style-type: none;
+}
+
+ul.List {
+    padding-left: 2rem;
+}
+
+ul.List li {
+    list-style-type: initial;
+}
+
+.Wrapper {
+    margin-left: 14rem;
+}
+
+.Text-mute {
+    color: #888;
+}
+
+.Doclet {
+    margin-top: 4rem;
 }
 
 .Param-indent {
@@ -71,13 +99,35 @@ ul li {
 }
 
 .ParamTypes {
-    color: #C55B4E;
+    color: #6CA6CE;
 }
+
 
 .ParamListItem p {
     display: inline;
 }
 
+
+.Navigation {
+    margin-bottom: 1rem;
+    padding: 0;
+    position: fixed;
+    width: 14rem;
+}
+
+.Navigation_section {
+    padding: 0;
+    margin-bottom: 1.25rem;
+}
+
+.Navigation_item {
+    margin: 0;
+}
+
+.FunctionDetail {
+    background-color: #f1f1f1;
+    padding: .5rem;
+}
 /*
 Code Highlighting
 
