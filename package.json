@@ -1,6 +1,6 @@
 {
   "name": "immutable-math",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "Some maths for immutable collections.",
   "main": "lib/index.js",
   "repository": "github:blueflag/immutable-math",
