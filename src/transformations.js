@@ -1,8 +1,6 @@
 // @flow
-import type {Iterable, List} from 'immutable';
-import {
-  sum
-} from './aggregations';
+import type {List} from 'immutable';
+import {sum} from './aggregations';
 
 /**
  * @module transformations
@@ -15,7 +13,7 @@ import {
  */
 
 function percent(): InputFunction {
-    return (input: Iterable<*,*>): Iterable<*,*> => {
+    return (input: Mappable): Mappable => {
         if(input.isEmpty()) {
             return input;
         }
@@ -31,8 +29,8 @@ function percent(): InputFunction {
  * @return {InputFunction}
  */
 
-function percentBy(valueMapper: ValueMapper, valueSetter: ValueSetter = null): InputFunction {
-    return (input: Iterable<*,*>): Iterable<*,*> => {
+function percentBy(valueMapper: ValueMapper, valueSetter: ValueSetter): InputFunction {
+    return (input: Mappable): Mappable => {
         if(input.isEmpty()) {
             return input;
         }
@@ -43,8 +41,9 @@ function percentBy(valueMapper: ValueMapper, valueSetter: ValueSetter = null): I
         if(!valueSetter) {
             return percents;
         }
+
         return input
-            .map((item: *, kk: *, iter: Iterable<*,*>): * => {
+            .map((item: *, kk: *, iter: Mappable): * => {
                 const value: number = percents.get(kk);
                 return valueSetter(item, value, kk, iter);
             });

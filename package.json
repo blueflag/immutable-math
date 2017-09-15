@@ -11,7 +11,7 @@
     "test": "nyc --report-dir=./coverage npm run tape && npm run check-coverage",
     "check-coverage": "nyc check-coverage --branches 0.0  --functions 0.0 --lines 0",
     "docs": "jsdoc -c jsdoc/conf.json",
-    "flow": "flow; test $? -eq 0 -o $? -eq 2"
+    "flow": "flow check"
   },
   "keywords": [
     "immutable",
@@ -35,7 +35,7 @@
     "eslint-config-blueflag": "^0.1.0",
     "eslint-plugin-babel": "^3.2.0",
     "eslint-plugin-jsx-a11y": "^0.6.2",
-    "flow-bin": "^0.33.0",
+    "flow-bin": "^0.54.1",
     "glob": "^7.0.6",
     "immutable": "^3.8.1",
     "jsdoc": "^3.4.1",

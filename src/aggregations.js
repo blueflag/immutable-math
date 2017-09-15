@@ -11,7 +11,7 @@ import type {Iterable} from 'immutable';
  */
 
 function min(): InputFunction {
-    return (input: Iterable<*,*>): number => {
+    return (input: Mappable): number => {
         return input.isEmpty()
           ? NaN
           : input.min();
@@ -25,7 +25,7 @@ function min(): InputFunction {
  */
 
 function minBy(valueMapper: ValueMapper): InputFunction {
-    return (input: Iterable<*,*>): number => min()(input.map(valueMapper));
+    return (input: Mappable): number => min()(input.map(valueMapper));
 }
 
 
@@ -36,7 +36,7 @@ function minBy(valueMapper: ValueMapper): InputFunction {
  */
 
 function max(): InputFunction {
-    return (input: Iterable<*,*>): number => {
+    return (input: Mappable): number => {
         return input.isEmpty()
       ? NaN
       : input.max();
@@ -50,7 +50,7 @@ function max(): InputFunction {
  */
 
 function maxBy(valueMapper: ValueMapper): InputFunction {
-    return (input: Iterable<*,*>): number => max()(input.map(valueMapper));
+    return (input: Mappable): number => max()(input.map(valueMapper));
 }
 
  /**
@@ -60,7 +60,7 @@ function maxBy(valueMapper: ValueMapper): InputFunction {
  */
 
 function sum(): InputFunction {
-    return (input: Iterable<*,*>): number => input.reduce((sum: number, val: number) => sum + val, 0);
+    return (input: Mappable): number => input.reduce((sum: number, val: number) => sum + val, 0);
 }
 
 /**
@@ -70,7 +70,7 @@ function sum(): InputFunction {
  */
 
 function sumBy(valueMapper: ValueMapper): InputFunction {
-    return (input: Iterable<*,*>): number => sum()(input.map(valueMapper));
+    return (input: Mappable): number => sum()(input.map(valueMapper));
 }
 
 
@@ -81,7 +81,7 @@ function sumBy(valueMapper: ValueMapper): InputFunction {
  */
 
 function average(): InputFunction {
-    return (input: Iterable<*,*>): number => {
+    return (input: Mappable): number => {
         return input.isEmpty()
             ? NaN
             : sum()(input) / input.count();
@@ -95,7 +95,7 @@ function average(): InputFunction {
  */
 
 function averageBy(valueMapper: ValueMapper): InputFunction {
-    return (input: Iterable<*,*>): number => average()(input.map(valueMapper));
+    return (input: Mappable): number => average()(input.map(valueMapper));
 }
 
 
@@ -128,7 +128,7 @@ function meanBy(valueMapper: ValueMapper): InputFunction {
  */
 
 function median(): InputFunction {
-    return (input: Iterable<*,*>): number => {
+    return (input: Mappable): number => {
         if(input.isEmpty()) {
             return NaN;
         }
@@ -148,7 +148,7 @@ function median(): InputFunction {
  */
 
 function medianBy(valueMapper: ValueMapper): InputFunction {
-    return (input: Iterable<*,*>): number => median()(input.map(valueMapper));
+    return (input: Mappable): number => median()(input.map(valueMapper));
 }
 
 export {

@@ -69,7 +69,7 @@ export {
  * @return {Number} The result of the function
  */
 
-type InputFunction = (input: Iterable<*,*>) => *;
+type InputFunction = (input: Mappable) => *;
 
 /**
  * A function required by some operations that allows you to specify what value gets pulled from each item in the input `Iterable` when performing a calculation.
@@ -81,4 +81,4 @@ type InputFunction = (input: Iterable<*,*>) => *;
  * @return {Number} The number to use in the operation.
  */
 
-type ValueMapper = (value: *, key: *, iter: Iterable<*,*>) => *;
+type ValueMapper = (value: *, key: *, iter: Mappable) => *;

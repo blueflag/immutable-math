@@ -10,3 +10,4 @@ coverage/
 *.gz
 *.sass-cache
 *.swp
+.nyc_output
